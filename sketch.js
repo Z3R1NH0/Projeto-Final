@@ -40,29 +40,29 @@ var group_star;
 var group_cloud;
 
 var morri;
-var fundo;
+//var fundo;
 
 
 
 function preload(){
 
-  trex_running = loadAnimation("png/Run (1).png","png/Run (2).png","png/Run (3).png","png/Run (4).png","png/Run (5).png","png/Run (6).png","png/Run (7).png","png/Run (8).png","png/Run (9).png","png/Run (10).png");
+  trex_running = loadAnimation("Run (1).png","Run (2).png","Run (3).png","Run (4).png","Run (5).png","Run (6).png","Run (7).png","Run (8).png","Run (9).png","Run (10).png");
   //flor_ing = loadImage ("ground2.png");
   cloud_ing = loadImage ("cloud.png");
-  jump = loadAnimation ("png/Jump (1).png","png/Jump (2).png","png/Jump (3).png","png/Jump (4).png","png/Jump (5).png","png/Jump (6).png","png/Jump (7).png","png/Jump (8).png","png/Jump (9).png","png/Jump (10).png",);
+  jump = loadAnimation ("Jump (1).png","Jump (2).png","Jump (3).png","Jump (4).png","Jump (5).png","Jump (6).png","Jump (7).png","Jump (8).png","Jump (9).png","Jump (10).png",);
   bg_ing = loadImage ("BG.png");
   star_ing = loadImage ("estrelas.gif");
 
   // objetos
   
-  bone_ing = loadImage ("png/Tiles/Bone (1).png");
-  bone_ing2 = loadImage ("png/Tiles/Bone (2).png");
-  bone_ing3 = loadImage ("png/Tiles/Bone (3).png");
-  bone_ing4 = loadImage ("png/Objects/Skeleton.png");
+  bone_ing = loadImage ("Bone (1).png");
+  bone_ing2 = loadImage ("Bone (2).png");
+  bone_ing3 = loadImage ("Bone (3).png");
+  bone_ing4 = loadImage ("Skeleton.png");
 
-  placa_ing = loadImage ("png/Objects/Sign.png");
-  Deadbush_ing = loadImage ("png/Objects/DeadBush.png");
-  Arvore_ing = loadImage ("png/Objects/Tree.png");
+  placa_ing = loadImage ("Sign.png");
+  Deadbush_ing = loadImage ("DeadBush.png");
+  Arvore_ing = loadImage ("Tree.png");
 
   // Inimigos
   obstacle_1 = loadImage ("obstacle1.png");
@@ -137,7 +137,7 @@ function setup(){
   group_cloud = createGroup ();
   group_star = createGroup ();
 
-  fundo.paly ();
+  //fundo.paly ();
 }
 
 function draw(){
