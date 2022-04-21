@@ -1,3 +1,16 @@
+// TA DANDO O MSM PROBLEMA LA, EU NÂO SEI AONDE TA ERRADO!!!!! SE CONSEGUIR DEIXAR O FEEDBACK PFVR! Se tiver cm outro problema me avisa.
+
+
+
+
+
+
+
+
+
+
+
+
 // var flor, flor_ing;
 var flor_inv;
 var jump;
