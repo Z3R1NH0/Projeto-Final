@@ -172,7 +172,7 @@ function draw(){
       trex.velocityY = -10;
     }
 
-    trex.velocityY = trex.velocityY + 0.8;
+    trex.velocityY = trex.velocityY + 0.5;
 
      if (flor_inv.x < 0){
       flor_inv.x = flor_inv.width/2;
@@ -240,7 +240,7 @@ function spawnInimigo (){
 
   rand = Math.round (random (1,6));
   
-  obstacle = createSprite (540,180,20,50);  
+  obstacle = createSprite (540,190,20,50);  
   grupo_inimigos.add(obstacle);
   
   if (frameCount % Math.round (random  (60,200) ) == 0) {
