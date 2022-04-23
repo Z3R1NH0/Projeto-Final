@@ -1,5 +1,6 @@
 // Obrigado pela ajuda <3
 // a musica n ta dando upload, o arquivo e muito pesado.
+// n tinha nem reparado nessas coisas obrigado S2
 
 
 
