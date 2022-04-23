@@ -187,7 +187,7 @@ function draw(){
     spawnCloud ();
   }
 
-  if (trex.isTouching(obstacle)) {
+  if (trex.isTouching(grupo_inimigo)) {
     gameState = end;
     morri.play ();
   }
@@ -214,6 +214,7 @@ function spawnCloud (){
   group_cloud.add(cloud);
   
   if (frameCount %100 == 0){ 
+  cloud.visible = false;
   cloud.addImage (cloud_ing);
   cloud.scale = 0.4;
   cloud.velocityX = -3;
@@ -226,8 +227,10 @@ function spawnCloud (){
 function spawnStar (){
   star = createSprite (574,10);
   group_star.add(star);
+  star.visible = false;
   
   if (frameCount %60 == 0){  
+    star.visible = true;
     star.addAnimation ("estrela", star_ing);
     star.scale = 0.5;
     star.velocityX = -2;
@@ -241,7 +244,7 @@ function spawnInimigo (){
 
   rand = Math.round (random (1,6));
   
-  obstacle = createSprite (540,170,20,50);  
+  obstacle = createSprite (540,180,20,50);  
   grupo_inimigos.add(obstacle);
   
   if (frameCount % Math.round (random  (60,200) ) == 0) {
@@ -252,26 +255,32 @@ function spawnInimigo (){
       //arrumar a escala dos objetos
       
       case 1: obstacle.addImage(obstacle_1)
+      obstacle.velocityX = -3;
       break;
 
       case 2: obstacle.addImage(obstacle_2)
+      obstacle.velocityX = -3;
       break;
 
       case 3: obstacle.addImage(obstacle_3)
+      obstacle.velocityX = -3;
       break;
 
       case 4: obstacle.addImage(obstacle_4)
+      obstacle.velocityX = -3;
       break;
 
       case 5: obstacle.addImage(obstacle_5)
+      obstacle.velocityX = -3;
       break;
 
       case 6: obstacle.addImage(obstacle_6)
+      obstacle.velocityX = -3;
       break;
       default: break;
     }
     obstacle.scale = 0.4;
-    obstacle.velocityX = -3;
+    
     obstacle.lifetime = 200;
   }
 
