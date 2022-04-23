@@ -39,7 +39,7 @@ var obstacle_4;
 var obstacle_5;   
 var obstacle_6;
 
-var score;
+var score = 0;
 var rand;
 
 var play = 1;
@@ -90,7 +90,7 @@ function preload(){
   gameover_ing = loadImage ("gameOver.png");
 
   morri = loadSound ("morri_1.mp3");
-  fundo = loadSound ("fundo");
+  //fundo = loadSound ("fundo");
 }
 
 function setup(){
@@ -174,7 +174,6 @@ function draw(){
       flor_inv.x = flor_inv.width/2;
     }
     
-    score = 0;
     score = score + Math.round (frameCount/1);
 
     fill ("White");
@@ -214,8 +213,8 @@ function spawnCloud (){
   cloud.addImage (cloud_ing);
   cloud.scale = 0.4;
   cloud.velocityX = -3;
+  cloud.y = Math.round (random (10,50));  
   cloud.lifetime = 200; 
-  cloud.y = Math.round (random (10,50)); 
   group_cloud.add (cloud);
   } 
 
@@ -228,8 +227,8 @@ function spawnStar (){
     star.addAnimation ("estrela", star_ing);
     star.scale = 0.5;
     star.velocityX = -2;
+    star.y = Math.round (random (10,100)); 
     star.lifetime = 400;
-    star.y = Math.round (random (10,100));
     group_star.add(star);
   }
   
@@ -242,6 +241,7 @@ function spawnInimigo (){
   if (frameCount % Math.round (random  (60,200) ) == 0) {
     obstacle = createSprite (540,170,20,50);  
     obstacle.scale = 0.4;
+    obstacle.velocityX = -3;
 
     switch (rand){
 
@@ -266,8 +266,6 @@ function spawnInimigo (){
       break;
       default: break;
     }
-
-    obstacle.velocityX = -3;
     obstacle.lifetime = 200;
   }
 
