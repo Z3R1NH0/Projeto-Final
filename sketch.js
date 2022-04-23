@@ -155,6 +155,8 @@ function setup(){
 
 function draw(){
   background ("black");
+  
+  trex.collide (flor_inv);
 
   if (gameState == play){
 
@@ -168,14 +170,12 @@ function draw(){
     }
 
     trex.velocityY = trex.velocityY + 0.8;
-    trex.collide (flor_inv);
 
      if (flor_inv.x < 0){
       flor_inv.x = flor_inv.width/2;
     }
     
     score = score + Math.round (frameCount/1);
-
     fill ("White");
     text ("Distancia Percorrida: " + score + " Metros", 25, 23);
 
