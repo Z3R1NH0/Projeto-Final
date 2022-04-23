@@ -220,7 +220,7 @@ function spawnCloud (){
   cloud.lifetime = 200; 
   
   } 
-  group_cloud.add (cloud);
+  group_cloud.add(cloud);
 }
 
 function spawnStar (){
@@ -243,7 +243,6 @@ function spawnInimigo (){
 
   if (frameCount % Math.round (random  (60,200) ) == 0) {
     obstacle = createSprite (540,170,20,50);  
-    
 
     switch (rand){
 
@@ -278,7 +277,7 @@ function spawnInimigo (){
     obstacle.velocityX = obstacle.velocityX - 3;
 
   }
-  grupo_inimigos.add (obstacle);
+  grupo_inimigos.add(obstacle);
 }
 
 function reiniciar (){
