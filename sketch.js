@@ -179,7 +179,7 @@ function draw(){
       trex.velocityY = -10;
     }
 
-    trex.velocityY = trex.velocityY + 0.6;
+    trex.velocityY = trex.velocityY + 0.5;
 
      if (flor_inv.x < 0){
       flor_inv.x = flor_inv.width/2;
