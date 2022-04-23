@@ -210,9 +210,8 @@ function draw(){
 }
 
 function spawnCloud (){
-
-  if (frameCount %100 == 0){ 
   cloud = createSprite (486,10);
+  if (frameCount %100 == 0){ 
   cloud.addImage (cloud_ing);
   cloud.scale = 0.4;
   cloud.velocityX = -3;
@@ -224,9 +223,8 @@ function spawnCloud (){
 }
 
 function spawnStar (){
-
+  star = createSprite (574,10);
   if (frameCount %60 == 0){  
-    star = createSprite (574,10);
     star.addAnimation ("estrela", star_ing);
     star.scale = 0.5;
     star.velocityX = -2;
@@ -240,9 +238,9 @@ function spawnStar (){
 function spawnInimigo (){
 
   rand = Math.round (random (1,6));
-
+  obstacle = createSprite (540,170,20,50);  
   if (frameCount % Math.round (random  (60,200) ) == 0) {
-    obstacle = createSprite (540,170,20,50);  
+    
 
     switch (rand){
 
