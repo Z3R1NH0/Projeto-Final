@@ -1,6 +1,7 @@
 // Obrigado pela ajuda <3
 // a musica n ta dando upload, o arquivo e muito pesado.
 // n tinha nem reparado nessas coisas obrigado S2
+// arrumei os problemas, mas n sei pq o obstaculo ta nascendo um em cima do outro, e pq tem um sprite ali no meio do nada. Ficou ruim mas tentei colocar oq a gente aprendeu.
 
 
 
@@ -55,6 +56,7 @@ var group_cloud;
 var grupo_inimigos;
 
 var morri;
+var dead;
 //var fundo;
 
 
@@ -67,6 +69,7 @@ function preload(){
   jump = loadAnimation ("Jump (1).png","Jump (2).png","Jump (3).png","Jump (4).png","Jump (5).png","Jump (6).png","Jump (7).png","Jump (8).png","Jump (9).png","Jump (10).png",);
   bg_ing = loadImage ("BG.png");
   star_ing = loadImage ("estrelas.gif");
+  dead = loadAnimation ("Dead (1).png","Dead (2).png","Dead (3).png","Dead (4).png","Dead (5).png","Dead (6).png","Dead (7).png","Dead (8).png","Dead (9).png","Dead (10).png",)
 
   // objetos
   
@@ -133,7 +136,7 @@ function setup(){
   
   //sprite de Trex
   trex = createSprite(50,160,20,50);
-  trex.addAnimation("running", trex_running);
+  trex.addAnimation("trex", trex_running);
   trex.scale = 0.09;
   
   //flor = createSprite (300,180,600,10);
@@ -143,10 +146,12 @@ function setup(){
   flor_inv = createSprite (300,200,600,10);
   flor_inv.visible = false;
 
-  gameover = createSprite (width/2,width/2);
+  gameover = createSprite (300,100);
+  gameover.addImage(gameover_ing);
   gameover.visible = false;
 
-  reset = createSprite (width/2,width/2 + 20);
+  reset = createSprite (300,140);
+  reset.addImage(reset_ing);
   reset.visible = false;
 
   group_cloud = createGroup ();
@@ -158,6 +163,8 @@ function setup(){
 
 function draw(){
   background ("black");
+
+  console.log (trex.y);
   
   trex.collide (flor_inv);
 
@@ -166,13 +173,13 @@ function draw(){
     gameover.visible = false;
     reset.visible = false;
 
-    if (keyDown("space") && trex.y >= 160){
+    if (keyDown("space") && trex.y >= 163){
 
-      trex.addAnimation ("Pulo", jump);
+      trex.changeAnimation ("trex", jump);
       trex.velocityY = -10;
     }
 
-    trex.velocityY = trex.velocityY + 0.5;
+    trex.velocityY = trex.velocityY + 0.6;
 
      if (flor_inv.x < 0){
       flor_inv.x = flor_inv.width/2;
@@ -189,6 +196,13 @@ function draw(){
 
   if (trex.isTouching(grupo_inimigos)) {
     gameState = end;
+
+    group_cloud.destroyEach ();
+    group_star.destroyEach ();
+    grupo_inimigos.destroyEach ();
+
+    trex.changeAnimation ("trex",dead);
+
     morri.play ();
   }
 
@@ -198,9 +212,9 @@ function draw(){
     gameover.visible = true;
 
     //------------------------------
-    obstacle.lifetime = -1;
-    star.lifetime = -1;
-    cloud.lifetime = -1;
+    grupo_inimigos.lifetime = -1;
+    group_cloud.lifetime = -1;
+    group_star.lifetime = -1;
 
     if (mousePressedOver (reset)){
       reiniciar ();
@@ -210,20 +224,20 @@ function draw(){
 }
 
 function spawnCloud (){
-  cloud = createSprite (486,10);
+  cloud = createSprite (610,10);
   
   if (frameCount %100 == 0){ 
   cloud.addImage (cloud_ing);
   cloud.scale = 0.4;
   cloud.velocityX = -3;
   cloud.y = Math.round (random (10,50));  
-  cloud.lifetime = 200; 
+  cloud.lifetime = 230; 
   
   } 
 }
 
 function spawnStar (){
-  star = createSprite (574,10);
+  star = createSprite (620,10);
   group_star.add(star);
   
   if (frameCount %60 == 0){  
@@ -231,7 +245,7 @@ function spawnStar (){
     star.scale = 0.5;
     star.velocityX = -2;
     star.y = Math.round (random (10,100)); 
-    star.lifetime = 400;
+    star.lifetime = 430;
     
   }
 }
@@ -240,44 +254,37 @@ function spawnInimigo (){
 
   rand = Math.round (random (1,6));
   
-  obstacle = createSprite (540,190,20,50);  
+  obstacle = createSprite (610,180,20,50);  
   grupo_inimigos.add(obstacle);
   
   if (frameCount % Math.round (random  (60,200) ) == 0) {
-    
-
     switch (rand){
 
       //arrumar a escala dos objetos
       
-      case 1: obstacle.addImage(obstacle_1)
-      obstacle.velocityX = -3;
+      case 1: obstacle.addImage(obstacle_1);
       break;
 
-      case 2: obstacle.addImage(obstacle_2)
-      obstacle.velocityX = -3;
+      case 2: obstacle.addImage(obstacle_2);
       break;
 
-      case 3: obstacle.addImage(obstacle_3)
-      obstacle.velocityX = -3;
+      case 3: obstacle.addImage(obstacle_3);
       break;
 
-      case 4: obstacle.addImage(obstacle_4)
-      obstacle.velocityX = -3;
+      case 4: obstacle.addImage(obstacle_4);
       break;
 
-      case 5: obstacle.addImage(obstacle_5)
-      obstacle.velocityX = -3;
+      case 5: obstacle.addImage(obstacle_5);
       break;
 
-      case 6: obstacle.addImage(obstacle_6)
-      obstacle.velocityX = -3;
+      case 6: obstacle.addImage(obstacle_6);
       break;
       default: break;
     }
+
+    obstacle.velocityX = -3;
     obstacle.scale = 0.4;
-    
-    obstacle.lifetime = 200;
+    obstacle.lifetime = 220;
   }
 
   if (score % 250 == 0){
