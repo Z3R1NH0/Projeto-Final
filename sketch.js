@@ -243,8 +243,7 @@ function spawnInimigo (){
 
   if (frameCount % Math.round (random  (60,200) ) == 0) {
     obstacle = createSprite (540,170,20,50);  
-    obstacle.scale = 0.4;
-    obstacle.velocityX = -3;
+    
 
     switch (rand){
 
@@ -269,6 +268,8 @@ function spawnInimigo (){
       break;
       default: break;
     }
+    obstacle.scale = 0.4;
+    obstacle.velocityX = -3;
     obstacle.lifetime = 200;
   }
 
