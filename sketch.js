@@ -187,7 +187,7 @@ function draw(){
     spawnCloud ();
   }
 
-  if (trex.isTouching(grupo_inimigo)) {
+  if (trex.isTouching(grupo_inimigos)) {
     gameState = end;
     morri.play ();
   }
@@ -211,10 +211,8 @@ function draw(){
 
 function spawnCloud (){
   cloud = createSprite (486,10);
-  group_cloud.add(cloud);
   
   if (frameCount %100 == 0){ 
-  cloud.visible = false;
   cloud.addImage (cloud_ing);
   cloud.scale = 0.4;
   cloud.velocityX = -3;
@@ -227,10 +225,8 @@ function spawnCloud (){
 function spawnStar (){
   star = createSprite (574,10);
   group_star.add(star);
-  star.visible = false;
   
   if (frameCount %60 == 0){  
-    star.visible = true;
     star.addAnimation ("estrela", star_ing);
     star.scale = 0.5;
     star.velocityX = -2;
