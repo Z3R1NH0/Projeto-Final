@@ -211,6 +211,8 @@ function draw(){
 
 function spawnCloud (){
   cloud = createSprite (486,10);
+  group_cloud.add(cloud);
+  
   if (frameCount %100 == 0){ 
   cloud.addImage (cloud_ing);
   cloud.scale = 0.4;
@@ -219,11 +221,12 @@ function spawnCloud (){
   cloud.lifetime = 200; 
   
   } 
-  group_cloud.add(cloud);
 }
 
 function spawnStar (){
   star = createSprite (574,10);
+  group_star.add(star);
+  
   if (frameCount %60 == 0){  
     star.addAnimation ("estrela", star_ing);
     star.scale = 0.5;
@@ -232,13 +235,15 @@ function spawnStar (){
     star.lifetime = 400;
     
   }
-  group_star.add(star);
 }
 
 function spawnInimigo (){
 
   rand = Math.round (random (1,6));
+  
   obstacle = createSprite (540,170,20,50);  
+  grupo_inimigos.add(obstacle);
+  
   if (frameCount % Math.round (random  (60,200) ) == 0) {
     
 
@@ -275,7 +280,6 @@ function spawnInimigo (){
     obstacle.velocityX = obstacle.velocityX - 3;
 
   }
-  grupo_inimigos.add(obstacle);
 }
 
 function reiniciar (){
