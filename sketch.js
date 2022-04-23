@@ -50,6 +50,7 @@ var gameover,gameover_ing;
 
 var group_star;
 var group_cloud;
+var grupo_inimigos;
 
 var morri;
 //var fundo;
@@ -148,6 +149,7 @@ function setup(){
 
   group_cloud = createGroup ();
   group_star = createGroup ();
+  grupo_inimigos = createGroup ();
 
   //fundo.paly ();
 }
@@ -214,9 +216,9 @@ function spawnCloud (){
   cloud.velocityX = -3;
   cloud.y = Math.round (random (10,50));  
   cloud.lifetime = 200; 
-  group_cloud.add (cloud);
+  
   } 
-
+  group_cloud.add (cloud);
 }
 
 function spawnStar (){
@@ -228,9 +230,9 @@ function spawnStar (){
     star.velocityX = -2;
     star.y = Math.round (random (10,100)); 
     star.lifetime = 400;
-    group_star.add(star);
+    
   }
-  
+  group_star.add(star);
 }
 
 function spawnInimigo (){
@@ -273,6 +275,7 @@ function spawnInimigo (){
     obstacle.velocityX = obstacle.velocityX - 3;
 
   }
+  grupo_inimigos.add (obstacle);
 }
 
 function reiniciar (){
@@ -280,7 +283,7 @@ function reiniciar (){
 
   group_cloud.destroyEach ();
   group_star.destroyEach ();
-  obstacle.destroy ();
+  grupo_inimigos.destroyEach ();
   
   score = 0;
 }
